@@ -1,4 +1,4 @@
-package com.nuriddin.my_teaching_project_like_udemy.entity.template;
+package com.nuriddin.courseforuser.entity.template;
 
 
 import lombok.Getter;

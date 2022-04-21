@@ -1,6 +1,6 @@
 package com.nuriddin.courseforuser.entity;
 
-import com.nuriddin.my_teaching_project_like_udemy.entity.template.AbsLongEntity;
+import com.nuriddin.courseforuser.entity.template.AbsLongEntity;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.hibernate.Hibernate;
@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import java.util.Objects;
+import java.util.UUID;
 
 // t.me/superJavaDeveloper 15.04.2022;
 
@@ -24,10 +25,8 @@ import java.util.Objects;
 
 public class LessonStatusForUser extends AbsLongEntity {
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    @ToString.Exclude
-    User user;
+
+    UUID userId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "lesson_id")

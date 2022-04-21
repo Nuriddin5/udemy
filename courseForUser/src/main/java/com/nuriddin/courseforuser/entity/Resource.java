@@ -1,6 +1,6 @@
-package com.nuriddin.my_teaching_project_like_udemy.entity;
+package com.nuriddin.courseforuser.entity;
 
-import com.nuriddin.my_teaching_project_like_udemy.entity.template.AbsLongEntity;
+import com.nuriddin.courseforuser.entity.template.AbsLongEntity;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.hibernate.Hibernate;
@@ -22,9 +22,8 @@ import java.util.Objects;
 
 public class Resource extends AbsLongEntity {
 
-    @OneToOne()
-    @JoinColumn(name = "attachment_id")
-    Attachment attachment;
+    @Column(name = "attachment_id")
+    Long attachmentId;
 
     String link;
 

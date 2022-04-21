@@ -1,7 +1,9 @@
-package com.nuriddin.my_teaching_project_like_udemy.entity.template;
+package com.nuriddin.courseforuser.entity.template;
 
 
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedBy;
@@ -12,7 +14,6 @@ import javax.persistence.Column;
 import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OrderBy;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.UUID;
 

@@ -1,7 +1,7 @@
-package com.nuriddin.my_teaching_project_like_udemy.repository;
+package com.nuriddin.courseforuser.repository;
 
 
-import com.nuriddin.my_teaching_project_like_udemy.entity.Lesson;
+import com.nuriddin.courseforuser.entity.Lesson;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface LessonRepo extends JpaRepository<Lesson, Long> {

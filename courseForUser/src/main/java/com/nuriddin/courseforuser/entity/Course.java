@@ -3,8 +3,8 @@ package com.nuriddin.courseforuser.entity;
 
 // t.me/superJavaDeveloper 15.04.2022;
 
-import com.nuriddin.my_teaching_project_like_udemy.entity.enums.CourseStatus;
-import com.nuriddin.my_teaching_project_like_udemy.entity.template.AbsLongEntity;
+import com.nuriddin.courseforuser.entity.enums.CourseStatus;
+import com.nuriddin.courseforuser.entity.template.AbsLongEntity;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.hibernate.Hibernate;
@@ -28,16 +28,18 @@ public class Course extends AbsLongEntity {
     @Column(nullable = false)
     Double price;
 
-    @ManyToMany
+    @OneToMany
     @ToString.Exclude
-    List<User> instructors;
+    List<UsersCourses> instructors;
 
     @Column(nullable = false)
     String headline;
 
-    @OneToOne
-    @JoinColumn(name = "preview_video_id")
-    Attachment previewVideo;
+    @Column(name = "preview_video_id",unique = true)
+    Long previewVideoId;
+
+    @Column(name = "photo_id",unique = true)
+    Long photoId;
 
     @Column(nullable = false)
     String description;
@@ -60,6 +62,7 @@ public class Course extends AbsLongEntity {
 
     @Enumerated(EnumType.STRING)
     CourseStatus status;
+
 
     @OneToMany(mappedBy = "course", orphanRemoval = true)
     @ToString.Exclude

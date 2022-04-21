@@ -1,6 +1,6 @@
 package com.nuriddin.courseforuser.entity;
 
-import com.nuriddin.my_teaching_project_like_udemy.entity.template.AbsLongEntity;
+import com.nuriddin.courseforuser.entity.template.AbsLongEntity;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.hibernate.Hibernate;

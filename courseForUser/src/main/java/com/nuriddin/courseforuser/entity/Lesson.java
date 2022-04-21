@@ -1,6 +1,6 @@
 package com.nuriddin.courseforuser.entity;
 
-import com.nuriddin.my_teaching_project_like_udemy.entity.template.AbsLongEntity;
+import com.nuriddin.courseforuser.entity.template.AbsLongEntity;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.hibernate.Hibernate;
@@ -27,9 +27,8 @@ public class Lesson extends AbsLongEntity {
     String name;
 
 
-    @OneToOne
-    @JoinColumn(name = "video_id")
-    Attachment video;
+    @Column(name = "video_id")
+    Long videoId;
 
     @OneToMany(mappedBy = "lesson", orphanRemoval = true)
     @ToString.Exclude

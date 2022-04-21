@@ -4,7 +4,6 @@ import com.nuriddin.my_teaching_project_like_udemy.entity.template.AbsLongEntity
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.hibernate.Hibernate;
-import org.springframework.boot.autoconfigure.web.ServerProperties;
 
 import javax.persistence.*;
 import java.util.List;
