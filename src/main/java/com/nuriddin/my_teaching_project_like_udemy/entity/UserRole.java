@@ -4,7 +4,6 @@ import com.nuriddin.my_teaching_project_like_udemy.entity.template.AbsLongEntity
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.hibernate.Hibernate;
-import org.springframework.boot.autoconfigure.web.ServerProperties;
 
 import javax.persistence.*;
 import java.util.List;
@@ -22,29 +21,16 @@ import java.util.Objects;
 @Entity
 
 
-public class Lesson extends AbsLongEntity {
+public class UserRole extends AbsLongEntity {
 
-    @Column(nullable = false)
-    String name;
-
-
-    @OneToOne
-    @JoinColumn(name = "video_id")
-    Attachment video;
-
-    @OneToMany(mappedBy = "lesson", orphanRemoval = true)
-    @ToString.Exclude
-    List<Resource> resources;
-
-    @OneToMany(mappedBy = "lesson", orphanRemoval = true)
-    @ToString.Exclude
-    List<LessonStatusForUser> lessonStatusForUsers;
+    @Column(nullable = false,unique = true)
+    String roleName;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Lesson that = (Lesson) o;
+        UserRole that = (UserRole) o;
         return getId() != null && Objects.equals(getId(), that.getId());
     }
 

@@ -8,11 +8,10 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.hibernate.Hibernate;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -48,6 +47,13 @@ public class User extends AbsUUIDEntity {
 
 
     String phoneNumber;
+
+    @OneToOne
+    Attachment profilePhoto;
+
+    @ManyToMany
+    @ToString.Exclude
+    Set<UserRole> roles;
 
     @OneToMany(mappedBy = "user", orphanRemoval = true)
     @ToString.Exclude
