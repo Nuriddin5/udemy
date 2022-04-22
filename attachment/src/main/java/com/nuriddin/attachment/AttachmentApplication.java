@@ -1,14 +1,14 @@
-package com.nuriddin.courseforuser;
+package com.nuriddin.attachment;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-
-public class CourseForUserApplication {
+//@EnableEurekaClient
+public class AttachmentApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(CourseForUserApplication.class, args);
+        SpringApplication.run(AttachmentApplication.class, args);
     }
 
 }
