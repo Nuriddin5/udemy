@@ -1,5 +1,7 @@
 package com.nuriddin.my_teaching_project_like_udemy.entity;
 
+import com.nuriddin.my_teaching_project_like_udemy.entity.enums.CourseStatus;
+import com.nuriddin.my_teaching_project_like_udemy.entity.enums.LessonType;
 import com.nuriddin.my_teaching_project_like_udemy.entity.template.AbsLongEntity;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -17,7 +19,7 @@ import java.util.Objects;
 @Getter
 @Setter
 @ToString
- 
+
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
 
@@ -27,10 +29,17 @@ public class Lesson extends AbsLongEntity {
     @Column(nullable = false)
     String name;
 
+    @ManyToOne(fetch = FetchType.EAGER                                                                                                                                                                                                                                                          )
+    @JoinColumn(name = "module_id")
+    @ToString.Exclude
+    Module module;
 
-    @OneToOne
-    @JoinColumn(name = "video_id")
-    Attachment video;
+    @Enumerated(EnumType.STRING)
+    LessonType lessonType;
+
+    boolean isForPreview;
+
+    String videoPath;
 
     @OneToMany(mappedBy = "lesson", orphanRemoval = true)
     @ToString.Exclude
@@ -39,6 +48,14 @@ public class Lesson extends AbsLongEntity {
     @OneToMany(mappedBy = "lesson", orphanRemoval = true)
     @ToString.Exclude
     List<LessonStatusForUser> lessonStatusForUsers;
+
+    public Lesson(String name, Module module, LessonType lessonType, boolean isForPreview, String videoPath) {
+        this.name = name;
+        this.module = module;
+        this.lessonType = lessonType;
+        this.isForPreview = isForPreview;
+        this.videoPath = videoPath;
+    }
 
     @Override
     public boolean equals(Object o) {

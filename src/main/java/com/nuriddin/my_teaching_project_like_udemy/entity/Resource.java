@@ -22,9 +22,8 @@ import java.util.Objects;
 
 public class Resource extends AbsLongEntity {
 
-    @OneToOne()
-    @JoinColumn(name = "attachment_id")
-    Attachment attachment;
+
+    String attachment;
 
     String link;
 

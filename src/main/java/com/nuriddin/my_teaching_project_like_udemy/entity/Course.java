@@ -13,6 +13,8 @@ import javax.persistence.*;
 import java.util.List;
 import java.util.Objects;
 
+import static com.nuriddin.my_teaching_project_like_udemy.service.UtilFunctions.getUniquePathName;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -25,6 +27,9 @@ public class Course extends AbsLongEntity {
     @Column(nullable = false)
     String name;
 
+    @Column(unique = true)
+    String pathName ;
+
     @Column(nullable = false)
     Double price;
 
@@ -35,28 +40,31 @@ public class Course extends AbsLongEntity {
     @Column(nullable = false)
     String headline;
 
-    @OneToOne
-    @JoinColumn(name = "preview_video_id")
-    Attachment previewVideo;
 
-    @Column(nullable = false)
+    String courseImage;
+
+    @Column(nullable = false, columnDefinition = "text")
+
     String description;
 
-    @Column(nullable = false)
+    //    @Column(nullable = false)
     String language;
 
 
     Float avgRating;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "text")
     String learningSkills;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "text")
     String requirements;
 
-    @ManyToMany
-    @ToString.Exclude
-    List<Category> categories;
+
+
+
+   @ManyToOne
+   @JoinColumn(name = "category_id")
+   Category category;
 
     @Enumerated(EnumType.STRING)
     CourseStatus status;
@@ -68,6 +76,36 @@ public class Course extends AbsLongEntity {
     @OneToMany(mappedBy = "course", orphanRemoval = true)
     @ToString.Exclude
     List<CourseRate> courseRates;
+
+
+    public Course(String name, Double price, List<User> instructors, String headline,
+                  String description, String learningSkills, String requirements, Category category) {
+        this.name = name;
+        this.price = price;
+        this.instructors = instructors;
+        this.headline = headline;
+        this.description = description;
+        this.learningSkills = learningSkills;
+        this.requirements = requirements;
+        this.category = category;
+        this.pathName = getUniquePathName(name);
+    }
+
+
+    public Course(String name, Double price, List<User> instructors, String headline,
+                  String courseImage, String description, String learningSkills, String requirements,Category category) {
+        this.name = name;
+        this.price = price;
+        this.instructors = instructors;
+        this.headline = headline;
+        this.courseImage = courseImage;
+        this.description = description;
+        this.learningSkills = learningSkills;
+        this.requirements = requirements;
+        this.category = category;
+        this.pathName = getUniquePathName(name);
+    }
+
 
 
     @Override

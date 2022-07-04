@@ -22,7 +22,7 @@ import java.util.UUID;
 @MappedSuperclass
 public abstract class AbsUUIDEntity extends AbsMainEntity{
     @Id
-    @Type(type = "org.hibernate.type.PostgresUUIDType")
+    @Type(type = "pg-uuid")
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
     private UUID id;

@@ -8,6 +8,8 @@ import org.hibernate.Hibernate;
 import javax.persistence.*;
 import java.util.Objects;
 
+import static com.nuriddin.my_teaching_project_like_udemy.service.UtilFunctions.getUniquePathName;
+
 // t.me/superJavaDeveloper 15.04.2022;
 
 @NoArgsConstructor
@@ -24,10 +26,23 @@ public class Category extends AbsLongEntity {
     @Column(nullable = false)
     String name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "parent_id")
-    @ToString.Exclude
-    Category parent;
+    @Column(nullable = false,unique = true)
+    String pathName;
+
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "parent_id")
+//    @ToString.Exclude
+//    Category parent;
+
+
+    public Category(String name) {
+        this.name = name;
+        this.pathName = getUniquePathName(name);
+    }
+
+
+
+
 
     @Override
     public boolean equals(Object o) {

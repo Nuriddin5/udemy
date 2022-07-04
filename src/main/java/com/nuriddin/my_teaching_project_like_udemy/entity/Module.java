@@ -6,6 +6,7 @@ import lombok.experimental.FieldDefaults;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
 // t.me/superJavaDeveloper 15.04.2022;
@@ -29,6 +30,15 @@ public class Module extends AbsLongEntity {
     @JoinColumn(name = "course_id")
     @ToString.Exclude
     Course course;
+
+    @OneToMany(mappedBy = "module", orphanRemoval = true)
+    @ToString.Exclude
+    List<Lesson> lessons;
+
+    public Module(String name, Course course) {
+        this.name = name;
+        this.course = course;
+    }
 
     @Override
     public boolean equals(Object o) {

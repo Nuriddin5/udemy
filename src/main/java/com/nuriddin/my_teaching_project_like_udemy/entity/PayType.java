@@ -24,8 +24,7 @@ public class PayType extends AbsLongEntity {
     @Column(nullable = false, unique = true)
     String name;
 
-    @OneToOne
-    Attachment logo;
+    String logo;
 
     @Override
     public boolean equals(Object o) {
